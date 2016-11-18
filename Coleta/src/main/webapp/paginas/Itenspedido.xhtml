@@ -9,55 +9,110 @@
 	<title>Itens do Pedido</title>
 </h:head>
 <h:body>
-	<h:form>
+	<p:growl id="mensagem" />
+	<h:form id="formListagem">
 		<p:panel header="Itens pedido - Listagem">
-			<p:dataTable emptyMessage="Nenhum registro encontrado."
-				paginator="true">
+			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
+				paginator="true" value="#{itensPedidoBean.itenspedidos}"
+				var="itenspedidos">
 				<f:facet name="header">
-					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();" />
+					<p:commandButton value="Novo"
+						actionListener="#{itensPedidoBean.novo}"
+						oncomplete="PF('dialogo').show();"
+						update=":mensagem :formCadastro:painel">
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
 				</f:facet>
 
-				<p:column headerText="Nome">
+				<p:column headerText="Nome" filterBy="#{itenspedidos.produto.nome}"
+					sortBy="#{itenspedidos.produto.nome}">
+					<h:outputText value="#{itenspedidos.produto.nome}" />
 				</p:column>
 
-				<p:column headerText="Peso">
+				<p:column headerText="Peso" filterBy="#{itenspedidos.peso}"
+					sortBy="#{itenspedidos.peso}">
+					<h:outputText value="#{itenspedidos.peso} Kg" />
 				</p:column>
-				
-				<p:column headerText="Valor Parcial">
+
+				<p:column headerText="Valor Parcial"
+					filterBy="#{itenspedidos.valor_parcial}"
+					sortBy="#{itenspedidos.valor_parcial}">
+					<h:outputText value="R$ #{itenspedidos.valor_parcial}" />
 				</p:column>
-				
-					<p:column headerText="Quantidade">
+
+				<p:column headerText="Quantidade"
+					filterBy="#{itenspedidos.quantidade}"
+					sortBy="#{itenspedidos.quantidade}">
+					<h:outputText value="#{itenspedidos.quantidade}" />
 				</p:column>
-				
+
 
 				<p:column headerText="Opções">
-				</p:column>
+					<p:commandButton icon="ui-icon-trash"
+						actionListener="#{itensPedidoBean.excluir}"
+						update=":mensagem: formListagem:tabela">
+						<p:confirm header="Confirmação" message="Deseja excluir o Item?"
+							icon="ui-icon-alert" />
+						<f:attribute name="itemSelecionado" value="#{itenspedidos}" />
+					</p:commandButton>
+					<p:commandButton icon="ui-icon-pencil"
+						update=":formCadastro:painel"
+						actionListener="#{itensPedidoBean.editar}"
+						oncomplete="PF('dialogo').show()">
+						<f:attribute name="itemSelecionado" value="#{itenspedidos}" />
+						<f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
 				
+				</p:column>
+
 			</p:dataTable>
+
+			<p:confirmDialog global="true">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+
 		</p:panel>
 	</h:form>
 
 	<p:dialog header="Itens pedido - Cadastro" widgetVar="dialogo"
 		draggable="false" resizable="false" modal="true" closable="false">
-		<h:form>
-			<h:panelGrid columns="2">
-				<p:outputLabel value="Produto" />
-				<p:selectOneMenu filter="true" > 
+		<h:form id="formCadastro">
+			<h:panelGrid id="painel" columns="2">
+				<p:outputLabel for="produto" value="Produto" />
+				<p:selectOneMenu id="produto" filter="true"
+					value="#{itensPedidoBean.itenspedido.produto}"
+					converter="omnifaces.SelectItemsConverter" required="true"
+					requiredMessage="O campo 'Produto' é obrigatório">
 					<f:selectItem itemValue="" itemLabel="Selecione um Produto"></f:selectItem>
+					<f:selectItems value="#{itensPedidoBean.produtos}" var="produto"
+						itemValue="#{produto}" itemLabel="#{produto.nome}" />
 				</p:selectOneMenu>
 
-				<p:outputLabel value="Peso" />
-				<p:inputText maxlength="5" size="10" />
-				
-				<p:outputLabel value="Valor Parcial" />
-				<p:inputText maxlength="5" size="10" />
-				
-				<p:outputLabel value="Quantidade" />
-				<p:inputText maxlength="5" size="10" />
+				<p:outputLabel for="peso" value="Peso" />
+				<p:inputText id="peso" maxlength="5" size="10"
+					value="#{itensPedidoBean.itenspedido.peso}" required="true"
+					requiredMessage="O campo 'Peso' é obrigatório" />
+
+				<p:outputLabel for="valor" value="Valor Parcial" />
+				<p:inputText id="valor" maxlength="5" size="10"
+					value="#{itensPedidoBean.itenspedido.valor_parcial}"
+					required="true"
+					requiredMessage="O campo 'Valor Parcial' é obrigatorio " />
+
+				<p:outputLabel for="quantidade" value="Quantidade" />
+				<p:inputText id="quantidade" maxlength="5" size="10"
+					value="#{itensPedidoBean.itenspedido.quantidade}" required="true"
+					requiredMessage="O campo 'Quantidade' é obrigatorio " />
 			</h:panelGrid>
 
 			<h:panelGrid columns="2">
-				<p:commandButton value="Salvar" />
+				<p:commandButton value="Salvar"
+					actionListener="#{itensPedidoBean.salvar}"
+					update=":mensagem :formCadastro:painel :formListagem:tabela" />
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>
 		</h:form>

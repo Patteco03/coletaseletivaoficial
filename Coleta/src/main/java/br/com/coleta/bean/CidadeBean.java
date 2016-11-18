@@ -123,9 +123,9 @@ public void editar(ActionEvent evento){
 	estados = estadoDAO.listar();
 	cidades = cidadeDAO.listar();
 	
-	Messages.addGlobalInfo("Estado excluido com sucesso!");
+	Messages.addGlobalInfo("Estado editado com sucesso!");
 	}catch(RuntimeException erro) {
-		Messages.addGlobalError("Ocorreu um erro ao tentar exluir!");
+		Messages.addGlobalError("Ocorreu um erro ao tentar editar!");
 		erro.printStackTrace();
 	}
 	
