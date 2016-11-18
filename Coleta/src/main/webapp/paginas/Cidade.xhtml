@@ -41,6 +41,14 @@
 							icon="ui-icon-alert" />
 						<f:attribute name="cidadeSelecionada" value="#{cidade}" />
 					</p:commandButton>
+					
+					<p:commandButton icon="ui-icon-pencil"
+						update=":formCadastro:painel"
+						actionListener="#{cidadeBean.editar}"
+						oncomplete="PF('dialogo').show()">
+
+						<f:attribute name="cidadeSelecionada" value="#{cidade}" />
+					</p:commandButton>
 				
 				</p:column>
 			</p:dataTable>

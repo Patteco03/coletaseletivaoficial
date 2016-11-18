@@ -110,5 +110,25 @@ public void excluir(ActionEvent evento){
 		}
 		
 	}
+
+public void editar(ActionEvent evento){
+	
+	try{
+	cidade =  (Cidade) evento.getComponent().getAttributes().get("cidadeSelecionada");
+	
+	CidadeDAO cidadeDAO = new CidadeDAO();
+	cidadeDAO.editar(cidade);
+	
+	EstadoDAO estadoDAO = new EstadoDAO();
+	estados = estadoDAO.listar();
+	cidades = cidadeDAO.listar();
+	
+	Messages.addGlobalInfo("Estado excluido com sucesso!");
+	}catch(RuntimeException erro) {
+		Messages.addGlobalError("Ocorreu um erro ao tentar exluir!");
+		erro.printStackTrace();
+	}
+	
+}
 	
 }
