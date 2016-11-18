@@ -20,7 +20,9 @@
 				<f:facet name="header">
 					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
 						actionListener="#{condominioBean.novo()}"
-						update=":formularioCadastro:painel" />
+						update=":formularioCadastro:painel" >
+					<f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>	
 				</f:facet>
 
 				<p:column headerText="Nome" sortBy="#{condominio.nome}"
@@ -41,8 +43,8 @@
 						update=":formularioCadastro:painel"
 						actionListener="#{condominioBean.editar}"
 						oncomplete="PF('dialogo').show()">
-
 						<f:attribute name="condominioSelecionado" value="#{condominio}" />
+						<f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
 					</p:commandButton>
 
 				</p:column>
