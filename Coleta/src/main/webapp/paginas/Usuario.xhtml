@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Usuários</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel header="Usuários - Listagem">
+			<p:dataTable emptyMessage="Nenhum registro encontrado."
+				paginator="true" value="#{usuarioBean.usuarios}" var="usuario">
+				<f:facet name="header">
+					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();" />
+				</f:facet>
+
+				<p:column headerText="login" sortBy="#{usuario.pessoa.email}" filterBy="#{usuario.pessoa.email}">
+					<h:outputText value="#{usuario.pessoa.email}" />
+				</p:column>
+
+				<p:column headerText="Senha" sortBy="#{usuario.senha}" filterBy="#{usuario.senha}">
+					<h:outputText value="#{usuario.senha}" />
+				</p:column>
+				
+				<p:column headerText="tipo" sortBy="#{usuario.tipo}" filterBy="#{usuario.tipo}">
+					<h:outputText value="#{usuario.tipo}" />
+				</p:column>
+				
+					<p:column headerText="Ativo" sortBy="#{usuario.ativo}">
+					<h:outputText value="#{usuario.ativo}" />
+				</p:column>
+				
+
+				<p:column headerText="Opções">
+				</p:column>
+				
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+
+	<p:dialog header="Usuarios - Cadastro" widgetVar="dialogo"
+		draggable="false" resizable="false" modal="true" closable="false">
+		<h:form>
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Nome" />
+				<p:selectOneMenu filter="true" > 
+					<f:selectItem itemValue="" itemLabel="Selecione uma Pessoa"></f:selectItem>
+				</p:selectOneMenu>
+				
+				<p:outputLabel value="Senha" />
+				<p:password maxlength="8" size="10" />
+				
+				<p:outputLabel value="Tipo " />
+				<p:selectOneRadio>
+					<f:selectItem itemValue="D" itemLabel="Administrador"></f:selectItem>
+					<f:selectItem itemValue="c" itemLabel="Cliente"></f:selectItem>
+					<f:selectItem itemValue="A" itemLabel="Comprador"></f:selectItem>
+				</p:selectOneRadio>
+				
+				<p:outputLabel value="Ativo" />
+				<p:selectBooleanCheckbox  />
+				
+		
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar" />
+				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>
