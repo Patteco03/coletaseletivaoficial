@@ -24,4 +24,8 @@
         <url-pattern>*.xhtml</url-pattern>
 </servlet-mapping>
 	
+	<!--  Carregamento do Servidor -->
+	<listener> 
+		<listener-class>br.com.coleta.util.HibernateContexto</listener-class>
+	</listener>
 </web-app>
