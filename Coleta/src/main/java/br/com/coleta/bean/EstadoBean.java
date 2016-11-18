@@ -84,7 +84,7 @@ public class EstadoBean implements Serializable {
 		estado =  (Estado) evento.getComponent().getAttributes().get("estadoSelecionado");
 		
 		EstadoDAO estadoDAO = new EstadoDAO();
-		estadoDAO.excluir(estado);;
+		estadoDAO.excluir(estado);
 		
 		estados = estadoDAO.listar();
 		
