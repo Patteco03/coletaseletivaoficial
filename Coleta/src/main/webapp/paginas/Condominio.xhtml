@@ -63,9 +63,9 @@
 		draggable="false" resizable="false" modal="true" closable="false">
 		<h:form id="formularioCadastro">
 			<h:panelGrid columns="2" id="painel">
-				<p:outputLabel value="Nome:" />
-				<p:inputText maxlength="50" size="30"
-					value="#{condominioBean.condominio.nome}" />
+				<p:outputLabel for="nome" value="Nome:" />
+				<p:inputText id="nome" maxlength="50" size="30"
+					value="#{condominioBean.condominio.nome}" required="true"  requiredMessage="O campo 'Nome' é obrigatório" />
 
 			</h:panelGrid>
 
