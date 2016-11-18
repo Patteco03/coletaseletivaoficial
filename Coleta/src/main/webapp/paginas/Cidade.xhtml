@@ -14,7 +14,7 @@
 	<h:form id="formListagem">
 		<p:panel header="Cidades - Listagem">
 			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
-				paginator="true" value="#{cidadeBean.cidades}" var="cidade" rows="5">
+				paginator="true" value="#{cidadeBean.cidades}" var="cidade" rows="10">
 				<f:facet name="header">
 					<p:commandButton value="Novo" actionListener="#{cidadeBean.novo}"
 						oncomplete="PF('dialogo').show();"
@@ -48,7 +48,7 @@
 					value="#{cidadeBean.cidade.nome}" />
 
 				<p:outputLabel value="Estado:" />
-				<p:selectOneMenu filter="true" value="#{cidadeBean.cidade.estado}">
+				<p:selectOneMenu filter="true" value="#{cidadeBean.cidade.estado}" converter="omnifaces.SelectItemsConverter">
 					<f:selectItem noSelectionOption="true" itemLabel="Selecione um estado" />
 					<f:selectItems value="#{cidadeBean.estados}" var="estado"
 						itemValue="#{estado}" itemLabel="#{estado.nome} - #{estado.sigla}" />
