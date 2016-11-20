@@ -9,30 +9,41 @@
 	<title>Clientes</title>
 </h:head>
 <h:body>
-	<h:form>
+
+	<p:growl id="mensagem" />
+
+	<h:form id="formListagem">
 		<p:panel header="Cliente - Listagem">
-			<p:dataTable emptyMessage="Nenhum registro encontrado."
+			<p:dataTable id="tabela" emptyMessage="Nenhum registro encontrado."
 				paginator="true" value="#{clienteBean.clientes}" var="cliente">
 				<f:facet name="header">
-					<p:commandButton value="Novo" actionListener="#{clienteBean.novo()}" update=":formCadastro:painel" oncomplete="PF('dialogo').show();" />
+					<p:commandButton value="Novo" actionListener="#{clienteBean.novo}"
+						update=":formCadastro:painel" oncomplete="PF('dialogo').show();">
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
 				</f:facet>
 
-				<p:column headerText="Nome" sortBy="#{cliente.pessoa.nome}" filterBy="#{cliente.pessoa.nome}">
-					<h:outputText value="#{cliente.pessoa.nome}"/>
+				<p:column headerText="Nome" sortBy="#{cliente.pessoa.nome}"
+					filterBy="#{cliente.pessoa.nome}">
+					<h:outputText value="#{cliente.pessoa.nome}" />
 				</p:column>
 
-				<p:column headerText="Ativo" sortBy="#{cliente.liberado}" filterBy="#{cliente.liberado}">
+				<p:column headerText="Ativo" sortBy="#{cliente.liberado}"
+					filterBy="#{cliente.liberado}">
 					<h:outputText value="#{cliente.liberado}" />
 				</p:column>
-				
-				<p:column headerText="Condominio" sortBy="#{cliente.condominio.nome}" filterBy="#{cliente.condominio.nome}">
+
+				<p:column headerText="Condominio"
+					sortBy="#{cliente.condominio.nome}"
+					filterBy="#{cliente.condominio.nome}">
 					<h:outputText value="#{cliente.condominio.nome}" />
 				</p:column>
-				
-				
+
+
 				<p:column headerText="Opções">
 				</p:column>
-				
+
 			</p:dataTable>
 		</p:panel>
 	</h:form>
@@ -41,30 +52,33 @@
 		draggable="false" resizable="false" modal="true" closable="false">
 		<h:form id="formCadastro">
 			<h:panelGrid id="painel" columns="2">
-				<p:outputLabel value="Nome" />
-				<p:selectOneMenu filter="true" value="#{clienteBean.cliente.pessoa.nome}" > 
-					<f:selectItem itemValue="" itemLabel="Selecione uma Pessoa"></f:selectItem>
+				<p:outputLabel for="pessoa" value="Nome" />
+				<p:selectOneMenu id="pessoa" filter="true" value="#{clienteBean.cliente.pessoa.nome}" converter="omnifaces.SelectItemsConverter" required="true" requiredMessage="O campo 'Nome - Pessoa' é obrigatório">
+					<f:selectItem itemLabel="Selecione uma Pessoa" />
+					<f:selectItems value="#{clienteBean.pessoas}" var="pessoa" itemValue="#{pessoa}" itemLabel="#{pessoa.nome}" />
 				</p:selectOneMenu>
-				
-				<p:outputLabel value="Condominio" />
-				<p:selectOneMenu filter="true" value="#{clienteBean.cliente.condominio.nome}" > 
-					<f:selectItem itemValue="" itemLabel="Selecione um Condominio"></f:selectItem>
+
+				<p:outputLabel for="condominio" value="Condominio" />
+				<p:selectOneMenu id="condominio" filter="true" value="#{clienteBean.cliente.condominio.nome}" converter="omnifaces.SelectItemsConverter" required="true" requiredMessage="O campo 'Condominio' é obrigatório">
+					<f:selectItem  itemLabel="Selecione um Condominio"></f:selectItem>
+					<f:selectItems value="#{clienteBean.condominios}" var="condominio" itemValue="#{condominio}" itemLabel="#{condominio.nome}" />
 				</p:selectOneMenu>
-				
-				<p:outputLabel value="CPF " />
-				<p:inputText maxlength="14" size="10" value="#{clienteBean.cliente.pessoa.cpf_cnpj}" />
-				
+
+				<p:outputLabel for="cpf" value="CPF " />
+				<p:inputText id="cpf" maxlength="14" size="10" value="#{clienteBean.cliente.pessoa.cpf_cnpj}" required="true"
+					requiredMessage="O campo 'CPF' é Obrigatorio " />
+
 
 				<p:outputLabel value="Ativo" />
 				<p:selectBooleanCheckbox value="#{clienteBean.cliente.liberado}" />
-				
-				
-				
+
+
+
 
 			</h:panelGrid>
 
 			<h:panelGrid columns="2">
-				<p:commandButton value="Salvar" />
+				<p:commandButton value="Salvar" actionListener="#{clienteBean.salvar}" update=":mensagem :formCadastro:painel :formListagem:tabela" />
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>
 		</h:form>

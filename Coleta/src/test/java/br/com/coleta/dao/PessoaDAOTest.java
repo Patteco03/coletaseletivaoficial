@@ -23,7 +23,7 @@ public class PessoaDAOTest {
 		pessoa.setCelular("84417847");
 		pessoa.setCep("69488-412");
 		pessoa.setComplemento("Atras");
-		pessoa.setCpf_cnpj("54542154514");
+		pessoa.setCpf("54542154514");
 		pessoa.setEmail("kaducouch@gmail.com");
 		pessoa.setNome("Kadu da Silva");
 		pessoa.setNumero(new Short("8847"));
@@ -47,7 +47,7 @@ public class PessoaDAOTest {
 			System.out.println("----------Dados Pessoais-------- ");
 			System.out.println("Codigo: " + pessoa.getCodigo());
 			System.out.println("Nome: " + pessoa.getNome());
-			System.out.println("CPF/CPNJ: " + pessoa.getCpf_cnpj());
+			System.out.println("CPF/CPNJ: " + pessoa.getCpf());
 			System.out.println("Email: " + pessoa.getEmail());
 			System.out.println("----------Dados Cadastrais-------- ");
 			System.out.println("Numero Residencia: " + pessoa.getNumero());
@@ -74,7 +74,7 @@ public class PessoaDAOTest {
 
 		System.out.println("----------Dados Pessoais-------- ");
 		System.out.println("Nome: " + pessoa.getNome());
-		System.out.println("CPF/CPNJ: " + pessoa.getCpf_cnpj());
+		System.out.println("CPF/CPNJ: " + pessoa.getCpf());
 		System.out.println("Email: " + pessoa.getEmail());
 		System.out.println("----------Dados Cadastrais-------- ");
 		System.out.println("Numero Residencia: " + pessoa.getNumero());
@@ -103,7 +103,7 @@ public class PessoaDAOTest {
 		System.out.println("Dados Removidos");
 		System.out.println("----------Dados Pessoais-------- ");
 		System.out.println("Nome: " + pessoa.getNome());
-		System.out.println("CPF/CPNJ: " + pessoa.getCpf_cnpj());
+		System.out.println("CPF/CPNJ: " + pessoa.getCpf());
 		System.out.println("Email: " + pessoa.getEmail());
 		System.out.println("----------Dados Cadastrais-------- ");
 		System.out.println("Numero Residencia: " + pessoa.getNumero());
@@ -138,7 +138,7 @@ public class PessoaDAOTest {
 		System.out.println("Dados a Serem Editados");
 		System.out.println("----------Dados Pessoais-------- ");
 		System.out.println("Nome: " + pessoa.getNome());
-		System.out.println("CPF/CPNJ: " + pessoa.getCpf_cnpj());
+		System.out.println("CPF/CPNJ: " + pessoa.getCpf());
 		System.out.println("Email: " + pessoa.getEmail());
 		System.out.println("----------Dados Cadastrais-------- ");
 		System.out.println("Numero Residencia: " + pessoa.getNumero());

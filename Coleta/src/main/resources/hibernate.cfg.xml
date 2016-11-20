@@ -30,7 +30,7 @@
 		<property name="show_sql">true</property>
 
 		<!-- Cria as tabelas do banco de dados -->
-		<property name="hbm2ddl.auto">validate</property>
+		<property name="hbm2ddl.auto">update</property>
 		
 		<mapping class="br.com.coleta.domain.Cliente" />
 		<mapping class="br.com.coleta.domain.Estado" />

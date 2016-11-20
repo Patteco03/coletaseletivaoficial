@@ -8,16 +8,15 @@ import javax.persistence.ManyToOne;
 
 @SuppressWarnings("serial")
 @Entity
-public class Pessoa extends GenericDomain{
-	
-	@Column(length = 80, nullable = false)
+public class Pessoa extends GenericDomain {
+	@Column(length = 50, nullable = false)
 	private String nome;
 	
 	@Column(length = 14, nullable = false)
-	private String cpf_cnpj;
+	private String cpf;
 	
-	@Column(length = 13, nullable = false)
-	private String telefone;
+	@Column(length = 12, nullable = false)
+	private String rg;
 	
 	@Column(length = 100, nullable = false)
 	private String rua;
@@ -25,12 +24,18 @@ public class Pessoa extends GenericDomain{
 	@Column(nullable = false)
 	private Short numero;
 	
+	@Column(length = 30, nullable = false)
+	private String bairro;
+	
 	@Column(length = 10, nullable = false)
 	private String cep;
 	
-	@Column(length = 80)
+	@Column(length = 10)
 	private String complemento;
 	
+	@Column(length = 13, nullable = false)
+	private String telefone;
+
 	@Column(length = 14, nullable = false)
 	private String celular;
 	
@@ -38,10 +43,9 @@ public class Pessoa extends GenericDomain{
 	private String email;
 	
 	@ManyToOne
-	@JoinColumn( nullable = false)
+	@JoinColumn(nullable = false)
 	private Cidade cidade;
-	
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -50,21 +54,20 @@ public class Pessoa extends GenericDomain{
 		this.nome = nome;
 	}
 
-
-	public String getCpf_cnpj() {
-		return cpf_cnpj;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCpf_cnpj(String cpf_cnpj) {
-		this.cpf_cnpj = cpf_cnpj;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public String getRg() {
+		return rg;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	public void setRg(String rg) {
+		this.rg = rg;
 	}
 
 	public String getRua() {
@@ -83,6 +86,14 @@ public class Pessoa extends GenericDomain{
 		this.numero = numero;
 	}
 
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
 	public String getCep() {
 		return cep;
 	}
@@ -97,6 +108,14 @@ public class Pessoa extends GenericDomain{
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getCelular() {
@@ -114,15 +133,12 @@ public class Pessoa extends GenericDomain{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	public Cidade getCidade() {
 		return cidade;
 	}
-
+	
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
-	
-	
-	
 }

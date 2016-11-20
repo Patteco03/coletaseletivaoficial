@@ -98,7 +98,7 @@ public class UsuarioDAOTest {
 		System.out.println("----------Dados Pessoais-------- ");
 		System.out.println("Codigo: " + pessoa.getCodigo());
 		System.out.println("Nome: " + pessoa.getNome());
-		System.out.println("CPF/CPNJ: " + pessoa.getCpf_cnpj());
+		System.out.println("CPF/CPNJ: " + pessoa.getCpf());
 		System.out.println("Email: " + pessoa.getEmail());
 		
 		UsuarioDAO usuarioDAO = new UsuarioDAO();

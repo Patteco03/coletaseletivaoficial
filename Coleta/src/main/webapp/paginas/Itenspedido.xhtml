@@ -32,13 +32,17 @@
 
 				<p:column headerText="Peso" filterBy="#{itenspedidos.peso}"
 					sortBy="#{itenspedidos.peso}">
-					<h:outputText value="#{itenspedidos.peso} Kg" />
+					<h:outputText value="#{itenspedidos.peso} Kg">
+						<f:convertNumber locale="pt_BR" minFractionDigits="2" />
+					</h:outputText>
 				</p:column>
 
 				<p:column headerText="Valor Parcial"
 					filterBy="#{itenspedidos.valor_parcial}"
 					sortBy="#{itenspedidos.valor_parcial}">
-					<h:outputText value="R$ #{itenspedidos.valor_parcial}" />
+					<h:outputText value="R$ #{itenspedidos.valor_parcial}">
+						<f:convertNumber locale="pt_BR" minFractionDigits="2" />
+					</h:outputText>
 				</p:column>
 
 				<p:column headerText="Quantidade"
@@ -61,9 +65,10 @@
 						actionListener="#{itensPedidoBean.editar}"
 						oncomplete="PF('dialogo').show()">
 						<f:attribute name="itemSelecionado" value="#{itenspedidos}" />
-						<f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
 					</p:commandButton>
-				
+
 				</p:column>
 
 			</p:dataTable>
@@ -95,18 +100,29 @@
 				<p:outputLabel for="peso" value="Peso" />
 				<p:inputText id="peso" maxlength="5" size="10"
 					value="#{itensPedidoBean.itenspedido.peso}" required="true"
-					requiredMessage="O campo 'Peso' é obrigatório" />
+					requiredMessage="O campo 'Peso' é obrigatório">
+					<f:validateLongRange minimum="0" maximum="10000"></f:validateLongRange>
+					<f:convertNumber locale="pt_BR" minFractionDigits="2" />
+				</p:inputText>
 
 				<p:outputLabel for="valor" value="Valor Parcial" />
 				<p:inputText id="valor" maxlength="5" size="10"
 					value="#{itensPedidoBean.itenspedido.valor_parcial}"
 					required="true"
-					requiredMessage="O campo 'Valor Parcial' é obrigatorio " />
+					requiredMessage="O campo 'Valor Parcial' é obrigatorio ">
+
+					<f:validateDoubleRange minimum="0.01" maximum="9999.99">
+					</f:validateDoubleRange>
+					<f:convertNumber locale="pt_BR" minFractionDigits="2" />
+				</p:inputText>
 
 				<p:outputLabel for="quantidade" value="Quantidade" />
 				<p:inputText id="quantidade" maxlength="5" size="10"
 					value="#{itensPedidoBean.itenspedido.quantidade}" required="true"
-					requiredMessage="O campo 'Quantidade' é obrigatorio " />
+					requiredMessage="O campo 'Quantidade' é obrigatorio ">
+
+					<f:validateLongRange minimum="0" maximum="1000"></f:validateLongRange>
+				</p:inputText>
 			</h:panelGrid>
 
 			<h:panelGrid columns="2">
