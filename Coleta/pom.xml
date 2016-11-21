@@ -32,17 +32,6 @@
 		</plugins>
 	</build>
 
-	<!-- Repositórios -->
-	<repositories>
-		<!-- For 3.5 and older -->
-		<repository>
-			<id>prime-repo</id>
-			<name>PrimeFaces Maven Repository</name>
-			<url>http://repository.primefaces.org</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
-
 	<dependencies>
 
 		<!-- Hibernate Core -->
@@ -79,14 +68,6 @@
 			<artifactId>primefaces</artifactId>
 			<version>6.0</version>
 		</dependency>
-
-		<!-- PrimeFaces Themes -->
-		<dependency>
-			<groupId>org.primefaces.themes</groupId>
-			<artifactId>all-themes</artifactId>
-			<version>1.0.10</version>
-		</dependency>
-
 
 		<!-- OmniFaces -->
 		<dependency>
