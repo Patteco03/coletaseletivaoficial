@@ -53,7 +53,7 @@ public class CondominioBean implements Serializable {
 			condominios = condominioDAO.listar();
 			
 			novo();
-			Messages.addFlashGlobalInfo("Estado salvo com sucesso!");
+			Messages.addFlashGlobalInfo("Condominio salvo com sucesso!");
 		} catch (RuntimeException erro) {
 			Messages.addFlashGlobalError("Ocorreu um erro ao  tentar Listar");
 			erro.printStackTrace();
@@ -72,7 +72,7 @@ public void excluir(ActionEvent evento){
 		
 		condominios = condominioDAO.listar();
 		
-		Messages.addGlobalInfo("Estado excluido com sucesso!");
+		Messages.addGlobalInfo("Condominio excluido com sucesso!");
 		}catch(RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao tentar exluir!");
 			erro.printStackTrace();

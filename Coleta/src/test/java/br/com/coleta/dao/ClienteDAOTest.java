@@ -15,18 +15,14 @@ public class ClienteDAOTest {
 	public void salvar() {
 
 		Long codigo = 1L;
-		Long codigoCondominio = 1L;
 
 		PessoaDAO pessoaDAO = new PessoaDAO();
 		Pessoa pessoa = pessoaDAO.buscar(codigo);
 
-		CondominioDAO condominioDAO = new CondominioDAO();
-		Condominio condominio = condominioDAO.buscar(codigoCondominio);
-
 		Cliente cliente = new Cliente();
 		cliente.setLiberado(new Boolean(true));
 		cliente.setPessoa(pessoa);
-		cliente.setCondominio(condominio);
+	
 
 		ClienteDAO clienteDAO = new ClienteDAO();
 		clienteDAO.salvar(cliente);
@@ -46,7 +42,7 @@ public class ClienteDAOTest {
 			System.out.println("Codigo : " + cliente.getCodigo());
 			System.out.println("Nome: " + cliente.getPessoa().getNome());
 			System.out.println("Ativo/Inativo " + cliente.getLiberado());
-			System.out.println("Condominio " + cliente.getCondominio().getNome());
+		
 			
 		}
 		
@@ -64,7 +60,7 @@ public class ClienteDAOTest {
 		System.out.println("Codigo : " + cliente.getCodigo());
 		System.out.println("Nome: " + cliente.getPessoa().getNome());
 		System.out.println("Ativo/Inativo " + cliente.getLiberado());
-		System.out.println("Condominio " + cliente.getCondominio().getNome());
+		
 		
 	}
 	
@@ -100,10 +96,10 @@ public class ClienteDAOTest {
 		System.out.println("Codigo : " + cliente.getCodigo());
 		System.out.println("Nome: " + cliente.getPessoa().getNome());
 		System.out.println("Ativo/Inativo " + cliente.getLiberado());
-		System.out.println("Condominio " + cliente.getCondominio().getNome());
+	
 		
 		cliente.setLiberado(new Boolean(false));
-		cliente.setCondominio(condominio);
+		
 		cliente.setPessoa(pessoa);
 		
 		
@@ -128,7 +124,7 @@ public class ClienteDAOTest {
 		System.out.println("Codigo : " + cliente.getCodigo());
 		System.out.println("Nome: " + cliente.getPessoa().getNome());
 		System.out.println("Ativo/Inativo " + cliente.getLiberado());
-		System.out.println("Condominio " + cliente.getCondominio().getNome());
+		
 		
 		
 	}

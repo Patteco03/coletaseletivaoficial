@@ -24,9 +24,6 @@ public class Pedido extends GenericDomain {
 	@Temporal(TemporalType.DATE)
 	private Date dataPedido;
 
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	private Comprador comprador;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
@@ -69,13 +66,6 @@ public class Pedido extends GenericDomain {
 		this.dataPedido = dataPedido;
 	}
 
-	public Comprador getComprador() {
-		return comprador;
-	}
-
-	public void setComprador(Comprador comprador) {
-		this.comprador = comprador;
-	}
 
 	public ItensPedido getItenspedido() {
 		return itenspedido;

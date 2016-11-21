@@ -8,7 +8,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.coleta.domain.Cliente;
-import br.com.coleta.domain.Comprador;
 import br.com.coleta.domain.ItensPedido;
 import br.com.coleta.domain.Pedido;
 
@@ -18,7 +17,6 @@ public class PedidoDAOTest {
 	public void salvar() {
 
 		Long codigoCliente = 1L;
-		Long codigoComprador = 1L;
 		Long codigoItensPedido = 1L;
 
 		ItensPedidoDAO itenspedidoDAO = new ItensPedidoDAO();
@@ -27,15 +25,11 @@ public class PedidoDAOTest {
 		ClienteDAO clienteDAO = new ClienteDAO();
 		Cliente cliente = clienteDAO.buscar(codigoCliente);
 
-		CompradorDAO compradorDAO = new CompradorDAO();
-		Comprador comprador = compradorDAO.buscar(codigoComprador);
-
 		Pedido pedido = new Pedido();
 		pedido.setPreco_total(new BigDecimal("120.00"));
 		pedido.setDescricao("Dinheiro em especie");
 		pedido.setDataPedido(new Date(11 / 11 / 2016));
 		pedido.setCliente(cliente);
-		pedido.setComprador(comprador);
 		pedido.setItenspedido(itenspedido);
 
 		PedidoDAO pedidoDAO = new PedidoDAO();
@@ -55,7 +49,6 @@ public class PedidoDAOTest {
 			System.out.println("-----------Item Pedido----------");
 			System.out.println("Nome do Produto: " + pedido.getItenspedido().getProduto().getNome());
 			System.out.println("Nome do Cliente-Vendedor: " + pedido.getCliente().getPessoa().getNome());
-			System.out.println("Nome do Comprador: " + pedido.getComprador().getPessoa().getNome());
 			System.out.println("Data da Venda: " + pedido.getDataPedido());
 
 		}
@@ -74,7 +67,6 @@ public class PedidoDAOTest {
 		System.out.println("-----------Item Pedido----------");
 		System.out.println("Nome do Produto: " + pedido.getItenspedido().getProduto().getNome());
 		System.out.println("Nome do Cliente-Vendedor: " + pedido.getCliente().getPessoa().getNome());
-		System.out.println("Nome do Comprador: " + pedido.getComprador().getPessoa().getNome());
 		System.out.println("Data da Venda: " + pedido.getDataPedido());
 
 	}
@@ -103,7 +95,6 @@ public class PedidoDAOTest {
 		System.out.println("-----------Pedido a ser Editado----------");
 		System.out.println("Nome do Produto: " + pedido.getItenspedido().getProduto().getNome());
 		System.out.println("Nome do Cliente-Vendedor: " + pedido.getCliente().getPessoa().getNome());
-		System.out.println("Nome do Comprador: " + pedido.getComprador().getPessoa().getNome());
 		System.out.println("Data da Venda: " + pedido.getDataPedido());
 
 		pedido.setDescricao("Pagamento em Cartão");
@@ -114,7 +105,6 @@ public class PedidoDAOTest {
 		System.out.println("-----------Pedido Editado----------");
 		System.out.println("Nome do Produto: " + pedido.getItenspedido().getProduto().getNome());
 		System.out.println("Nome do Cliente-Vendedor: " + pedido.getCliente().getPessoa().getNome());
-		System.out.println("Nome do Comprador: " + pedido.getComprador().getPessoa().getNome());
 		System.out.println("Data da Venda: " + pedido.getDataPedido());
 		System.out.println("Forma de Pagamento: " + pedido.getDescricao());
 
@@ -134,7 +124,6 @@ public class PedidoDAOTest {
 		System.out.println("----------Pedido Excluido com Sucesso----------");
 		System.out.println("Nome do Produto: " + pedido.getItenspedido().getProduto().getNome());
 		System.out.println("Nome do Cliente-Vendedor: " + pedido.getCliente().getPessoa().getNome());
-		System.out.println("Nome do Comprador: " + pedido.getComprador().getPessoa().getNome());
 		System.out.println("Data da Venda: " + pedido.getDataPedido());
 		System.out.println("Forma de Pagamento: " + pedido.getDescricao());
 

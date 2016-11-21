@@ -50,7 +50,7 @@ public class ItensPedidoBean implements Serializable {
 			produtos = produtoDAO.listar("nome");
 
 		} catch (RuntimeException erro) {
-			Messages.addFlashGlobalError("Ocorreu um erro ao gerar uma nova cidade");
+			Messages.addFlashGlobalError("Ocorreu um erro ao gerar um novo Pedido");
 			erro.printStackTrace();
 		}
 

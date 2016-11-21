@@ -143,6 +143,7 @@ public class PessoaBean implements Serializable {
 			
 			estado = new Estado();
 		
+			Messages.addGlobalInfo("Pessoa salva com sucesso");
 		}catch (RuntimeException erro) {
 
 			Messages.addFlashGlobalError("Erro ao salvar pessoa");

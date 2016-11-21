@@ -35,7 +35,6 @@
 		<mapping class="br.com.coleta.domain.Cliente" />
 		<mapping class="br.com.coleta.domain.Estado" />
 		<mapping class="br.com.coleta.domain.Cidade" />
-		<mapping class="br.com.coleta.domain.Comprador" />
 		<mapping class="br.com.coleta.domain.Condominio" />
 		<mapping class="br.com.coleta.domain.Estado" />
 		<mapping class="br.com.coleta.domain.ItensPedido" />
