@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ActionEvent;
 
 import org.omnifaces.util.Messages;
 
@@ -13,7 +14,6 @@ import br.com.coleta.dao.ClienteDAO;
 import br.com.coleta.dao.PessoaDAO;
 import br.com.coleta.domain.Cliente;
 import br.com.coleta.domain.Pessoa;
-
 
 @SuppressWarnings("serial")
 @ManagedBean
@@ -77,16 +77,53 @@ public class ClienteBean implements Serializable {
 			clienteDAO.merge(cliente);
 
 			cliente = new Cliente();
-			
+
 			clientes = clienteDAO.listar("dataCadastro");
 
 			PessoaDAO pessoaDAO = new PessoaDAO();
 			pessoas = pessoaDAO.listar("nome");
-			
+
 			Messages.addGlobalInfo("Cliente salvo com sucesso");
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao tentar salvar o cliente");
 			erro.printStackTrace();
 		}
+	}
+
+	public void excluir(ActionEvent evento) {
+
+		try {
+
+			cliente = (Cliente) evento.getComponent().getAttributes().get("clienteSelecionado");
+
+			ClienteDAO clienteDAO = new ClienteDAO();
+			clienteDAO.excluir(cliente);
+
+			clientes = clienteDAO.listar();
+
+			Messages.addGlobalInfo("Cliente excluido com sucesso!");
+		} catch (RuntimeException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar exluir!");
+			erro.printStackTrace();
+		}
+	}
+
+	public void editar(ActionEvent evento) {
+
+		try {
+
+			cliente = (Cliente) evento.getComponent().getAttributes().get("clienteSelecionado");
+
+			ClienteDAO clienteDAO = new ClienteDAO();
+			clienteDAO.editar(cliente);
+
+			clientes = clienteDAO.listar();
+
+			Messages.addGlobalInfo("Cliente excluido com sucesso!");
+		} catch (RuntimeException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar exluir!");
+			erro.printStackTrace();
+		}
+
 	}
 }
