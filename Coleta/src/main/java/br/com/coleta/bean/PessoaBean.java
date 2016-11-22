@@ -22,22 +22,21 @@ import br.com.coleta.domain.Pessoa;
 @ManagedBean
 @ViewScoped
 public class PessoaBean implements Serializable {
-	
+
 	private Estado estado;
 	private Pessoa pessoa;
 	private List<Pessoa> pessoas;
 	private List<Cidade> cidades;
 	private List<Estado> estados;
-	
-	
+
 	public Estado getEstado() {
 		return estado;
 	}
-	
+
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-	
+
 	public List<Pessoa> getPessoas() {
 		return pessoas;
 	}
@@ -94,7 +93,7 @@ public class PessoaBean implements Serializable {
 
 			EstadoDAO estadoDAO = new EstadoDAO();
 			estados = estadoDAO.listar();
-			
+
 			estado = new Estado();
 
 			cidades = new ArrayList<Cidade>();
@@ -108,23 +107,20 @@ public class PessoaBean implements Serializable {
 	}
 
 	public void editar(ActionEvent evento) {
-		
-		try{
+
+		try {
 			pessoa = (Pessoa) evento.getComponent().getAttributes().get("pessoaSelecionado");
-			
-			PessoaDAO pessoaDAO = new PessoaDAO();
-			pessoaDAO.editar(pessoa);
-			
+
+			estado = pessoa.getCidade().getEstado();
+
 			EstadoDAO estadoDAO = new EstadoDAO();
-			estados = estadoDAO.listar();
-			
+			estados = estadoDAO.listar("nome");
+
 			CidadeDAO cidadeDAO = new CidadeDAO();
-			cidades = cidadeDAO.listar();
-			
-			pessoas = pessoaDAO.listar("nome");
-			
+			cidades = cidadeDAO.buscarPorEstado(estado.getCodigo());
+
 			Messages.addGlobalInfo("Pessoa editada com sucesso!");
-		}catch(RuntimeException erro) {
+		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao tentar editar!");
 			erro.printStackTrace();
 		}
@@ -132,19 +128,19 @@ public class PessoaBean implements Serializable {
 	}
 
 	public void salvar() {
-		try{
-			
+		try {
+
 			PessoaDAO pessoaDAO = new PessoaDAO();
 			pessoaDAO.merge(pessoa);
-			
+
 			pessoas = pessoaDAO.listar();
-			
+
 			novo();
-			
+
 			estado = new Estado();
-		
+
 			Messages.addGlobalInfo("Pessoa salva com sucesso");
-		}catch (RuntimeException erro) {
+		} catch (RuntimeException erro) {
 
 			Messages.addFlashGlobalError("Erro ao salvar pessoa");
 			erro.printStackTrace();
@@ -154,50 +150,49 @@ public class PessoaBean implements Serializable {
 	}
 
 	public void excluir(ActionEvent evento) {
-		
-		try{
+
+		try {
 			pessoa = (Pessoa) evento.getComponent().getAttributes().get("pessoaSelecionado");
-			
+
 			PessoaDAO pessoaDAO = new PessoaDAO();
 			pessoaDAO.excluir(pessoa);
-			
+
 			EstadoDAO estadoDAO = new EstadoDAO();
 			estados = estadoDAO.listar();
-			
+
 			CidadeDAO cidadeDAO = new CidadeDAO();
 			cidades = cidadeDAO.listar();
-			
+
 			pessoas = pessoaDAO.listar("nome");
-			
-		}catch(RuntimeException erro) {
+
+		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao tentar exluir!");
 			erro.printStackTrace();
 		}
 
 	}
-	
-	public void popular(){
-		
-		try{
-		if(estado != null){
-			
-			CidadeDAO cidadeDAO = new CidadeDAO();
-			cidades = cidadeDAO.buscarPorEstado(estado.getCodigo());
-			
-		}else{
-			
-			cidades = new ArrayList<>();
-			
-		}
-		
-		}catch (RuntimeException erro) {
+
+	public void popular() {
+
+		try {
+			if (estado != null) {
+
+				CidadeDAO cidadeDAO = new CidadeDAO();
+				cidades = cidadeDAO.buscarPorEstado(estado.getCodigo());
+
+			} else {
+
+				cidades = new ArrayList<>();
+
+			}
+
+		} catch (RuntimeException erro) {
 
 			Messages.addFlashGlobalError("Erro ao listar Cidade");
 			erro.printStackTrace();
 
 		}
-		
-		
+
 	}
 
 }
