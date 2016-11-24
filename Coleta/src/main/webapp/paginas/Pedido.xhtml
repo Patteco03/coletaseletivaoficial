@@ -6,16 +6,13 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Pedido</title>
+	<title>Vendas</title>
 </h:head>
 <h:body>
 	<h:form>
-		<p:panel header="Pedidos - Listagem">
+		<p:panel header="Venda">
 			<p:dataTable emptyMessage="Nenhum registro encontrado."
-				paginator="true">
-				<f:facet name="header">
-					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();" />
-				</f:facet>
+				paginator="true" >
 				
 				<p:column headerText="Produto">
 				</p:column>
@@ -26,23 +23,15 @@
 				<p:column headerText="Nome do Comprador">
 				</p:column>
 				
-				<p:column headerText="Contato Vendedor">
+				<p:column headerText="Quantidade">
 				</p:column>
 				
-				<p:column headerText="Email do Vendedor">
-				</p:column>
-
-				
-				<p:column headerText="Contato do Comprador">
-				</p:column>
-				
-				<p:column headerText="Email do Comprador">
+				<p:column headerText="Preco Total">
 				</p:column>
 				
 				
-				
-			
 				<p:column headerText="Opções">
+					<p:commandButton icon="ui-icon-plus" />	
 				</p:column>
 				
 			</p:dataTable>
@@ -64,23 +53,12 @@
 					<f:selectItem itemValue="" itemLabel="Selecione um Comprador"></f:selectItem>
 				</p:selectOneMenu>
 				
-				<p:outputLabel value="Contato Comprador" />
-				<p:inputText maxlength="14" size="15" />
-				
-				<p:outputLabel value="Email Comprador" />
 				<p:inputText maxlength="100" size="30" />
 				
 				<p:outputLabel value="Vendedor" />
 				<p:selectOneMenu filter="true" > 
 					<f:selectItem itemValue="" itemLabel="Selecione um Vendedor"></f:selectItem>
 				</p:selectOneMenu>
-				
-				<p:outputLabel value="Contato Vendedor" />
-				<p:inputText maxlength="14" size="15" />
-				
-				<p:outputLabel value="Email Vendedor" />
-				<p:inputText maxlength="100" size="30" />
-				
 				
 				</p:selectOneMenu>
 				

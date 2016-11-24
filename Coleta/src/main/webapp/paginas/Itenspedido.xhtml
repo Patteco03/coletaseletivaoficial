@@ -84,7 +84,7 @@
 	</h:form>
 
 	<p:dialog header="Itens pedido - Cadastro" widgetVar="dialogo"
-		draggable="false" resizable="false" modal="true" closable="false">
+		draggable="true" resizable="false" modal="true" closable="false">
 		<h:form id="formCadastro" enctype="multipart/form-data">
 			<h:panelGrid id="painel" columns="2">
 				<p:outputLabel for="produto" value="Produto" />
@@ -129,9 +129,10 @@
 					fileUploadListener="#{itensPedidoBean.upload}" update=":mensagem :formCadastro:foto" auto="true" />
 					
 				<p:outputLabel for="foto"  value="Foto:"/>
-				<h:graphicImage id="foto" value="#{imagemBean.foto}" >
+				<p:graphicImage id="foto" value="#{imagemBean.foto}" >
 					<f:param name="caminho" value="#{itensPedidoBean.itenspedido.caminho}" />
-				</h:graphicImage>
+				</p:graphicImage>
+				
 			</h:panelGrid>
 
 			<h:panelGrid columns="2">

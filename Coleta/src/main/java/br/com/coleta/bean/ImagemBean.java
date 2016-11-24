@@ -16,6 +16,7 @@ import org.primefaces.model.StreamedContent;
 @ManagedBean
 @RequestScoped
 public class ImagemBean {
+	
 	@ManagedProperty("#{param.caminho}")
 	private String caminho;
 	
@@ -24,25 +25,28 @@ public class ImagemBean {
 	public String getCaminho() {
 		return caminho;
 	}
-	
 	public void setCaminho(String caminho) {
 		this.caminho = caminho;
 	}
-	
 	public StreamedContent getFoto() throws IOException {
+		
 		if(caminho == null || caminho.isEmpty()){
-			Path path = Paths.get("C:/Upload/branco.png");
+			Path path = Paths.get("C:/upload/branco.png");
 			InputStream stream = Files.newInputStream(path);
 			foto = new DefaultStreamedContent(stream);
 		}else{
 			Path path = Paths.get(caminho);
 			InputStream stream = Files.newInputStream(path);
 			foto = new DefaultStreamedContent(stream);
+			
 		}
+		
 		return foto;
 	}
-	
 	public void setFoto(StreamedContent foto) {
 		this.foto = foto;
 	}
+	
+	
+
 }
