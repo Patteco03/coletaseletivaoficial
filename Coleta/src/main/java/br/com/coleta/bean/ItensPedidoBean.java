@@ -1,6 +1,11 @@
 package br.com.coleta.bean;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -9,6 +14,8 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
 import org.omnifaces.util.Messages;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 
 import br.com.coleta.dao.ItensPedidoDAO;
 import br.com.coleta.dao.ProdutoDAO;
@@ -55,70 +62,99 @@ public class ItensPedidoBean implements Serializable {
 		}
 
 	}
-	
+
 	public void salvar() {
 
 		try {
 			
+			if(itenspedido.getCaminho() == null ){
+				Messages.addGlobalError("O Campo foto é obrigatório!");
+				return;
+			}
+			
 			ItensPedidoDAO intesprodutoDAO = new ItensPedidoDAO();
-			intesprodutoDAO.merge(itenspedido);
-			
+			ItensPedido itenRetorno = intesprodutoDAO.merge(itenspedido);
+
+			Path origem = Paths.get(itenspedido.getCaminho());
+			Path destino = Paths.get("C:/Upload/" + itenRetorno.getCodigo() + ".png");
+			Files.copy(origem, destino, StandardCopyOption.REPLACE_EXISTING);
+
 			itenspedido = new ItensPedido();
-			
+
 			ProdutoDAO produtoDAO = new ProdutoDAO();
 			produtos = produtoDAO.listar();
-			
+
 			itenspedidos = intesprodutoDAO.listar();
-			
-			
+
 			Messages.addGlobalInfo("Itens salvo com sucesso!");
-		} catch (RuntimeException erro) {
+		} catch (RuntimeException | IOException erro) {
 			Messages.addFlashGlobalError("Ocorreu um erro ao tentar salvar");
 			erro.printStackTrace();
 		}
 	}
-	
-public void excluir(ActionEvent evento){
-		
-		try{
-		itenspedido =  (ItensPedido) evento.getComponent().getAttributes().get("itemSelecionado");
-		
-		ItensPedidoDAO itenspedidoDAO = new ItensPedidoDAO();
-		itenspedidoDAO.excluir(itenspedido);
-		
-		ProdutoDAO produtoDAO = new ProdutoDAO();
-		produtos = produtoDAO.listar();
-		
-		itenspedidos = itenspedidoDAO.listar();
-		
-		Messages.addGlobalInfo("Pedido excluido com sucesso!");
-		}catch(RuntimeException erro) {
+
+	public void excluir(ActionEvent evento) {
+
+		try {
+			itenspedido = (ItensPedido) evento.getComponent().getAttributes().get("itemSelecionado");
+
+			ItensPedidoDAO itenspedidoDAO = new ItensPedidoDAO();
+			itenspedidoDAO.excluir(itenspedido);
+
+			ProdutoDAO produtoDAO = new ProdutoDAO();
+			produtos = produtoDAO.listar();
+
+			Path arquivo = Paths.get("C:/Upload/" + itenspedido.getCodigo() + ".png");
+
+			Files.deleteIfExists(arquivo);
+
+			itenspedidos = itenspedidoDAO.listar();
+
+			Messages.addGlobalInfo("Pedido excluido com sucesso!");
+		} catch (RuntimeException | IOException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao tentar exluir!");
 			erro.printStackTrace();
 		}
-		
+
 	}
 
-public void editar(ActionEvent evento){
-	
-	try{
-	itenspedido =  (ItensPedido) evento.getComponent().getAttributes().get("itemSelecionado");
-	
-	ItensPedidoDAO itenspedidoDAO = new ItensPedidoDAO();
-	itenspedidoDAO.editar(itenspedido);
-	
-	ProdutoDAO produtoDAO = new ProdutoDAO();
-	produtos = produtoDAO.listar();
-	
-	itenspedidos = itenspedidoDAO.listar();
-	
-	Messages.addGlobalInfo("Pedido editado com sucesso!");
-	}catch(RuntimeException erro) {
-		Messages.addGlobalError("Ocorreu um erro ao tentar editar!");
-		erro.printStackTrace();
+	public void editar(ActionEvent evento) {
+
+		try {
+			itenspedido = (ItensPedido) evento.getComponent().getAttributes().get("itemSelecionado");
+			
+			itenspedido.setCaminho("C:/Upload/" + itenspedido.getCodigo() + ".png");
+
+			ItensPedidoDAO itenspedidoDAO = new ItensPedidoDAO();
+			itenspedidoDAO.editar(itenspedido);
+			
+			ProdutoDAO produtoDAO = new ProdutoDAO();
+			produtos = produtoDAO.listar();
+
+			itenspedidos = itenspedidoDAO.listar();
+
+			Messages.addGlobalInfo("Pedido editado com sucesso!");
+		} catch (RuntimeException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao tentar editar!");
+			erro.printStackTrace();
+		}
+
 	}
-	
-}
+
+	public void upload(FileUploadEvent evento) {
+
+		try {
+			UploadedFile arquivoUpload = evento.getFile();
+			Path arquivoTemp = Files.createTempFile(null, null);
+			Files.copy(arquivoUpload.getInputstream(), arquivoTemp, StandardCopyOption.REPLACE_EXISTING);
+			itenspedido.setCaminho(arquivoTemp.toString());
+			Messages.addGlobalInfo("Upload realizado com sucesso");
+		} catch (IOException erro) {
+			Messages.addGlobalInfo("Ocorreu um erro ao tentar fazer o Upload de arquivos");
+			erro.printStackTrace();
+		}
+
+	}
 
 	public List<ItensPedido> getItenspedidos() {
 		return itenspedidos;

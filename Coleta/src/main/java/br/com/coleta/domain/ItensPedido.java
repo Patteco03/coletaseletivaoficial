@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @SuppressWarnings("serial")
 @Entity
@@ -23,7 +24,10 @@ public class ItensPedido  extends GenericDomain{
 		@ManyToOne
 		@JoinColumn(nullable = false)
 		private Produto produto;
-
+		
+		@Transient
+		private String caminho;
+		
 		public Integer getQuantidade() {
 			return quantidade;
 		}
@@ -54,5 +58,13 @@ public class ItensPedido  extends GenericDomain{
 
 		public void setProduto(Produto produto) {
 			this.produto = produto;
+		}
+		
+		public String getCaminho() {
+			return caminho;
+		}
+		
+		public void setCaminho(String caminho) {
+			this.caminho = caminho;
 		}
 }

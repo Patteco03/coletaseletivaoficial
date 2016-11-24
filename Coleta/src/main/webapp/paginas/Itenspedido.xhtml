@@ -85,7 +85,7 @@
 
 	<p:dialog header="Itens pedido - Cadastro" widgetVar="dialogo"
 		draggable="false" resizable="false" modal="true" closable="false">
-		<h:form id="formCadastro">
+		<h:form id="formCadastro" enctype="multipart/form-data">
 			<h:panelGrid id="painel" columns="2">
 				<p:outputLabel for="produto" value="Produto" />
 				<p:selectOneMenu id="produto" filter="true"
@@ -123,6 +123,15 @@
 
 					<f:validateLongRange minimum="0" maximum="1000"></f:validateLongRange>
 				</p:inputText>
+
+				<p:outputLabel for="upload" value="Foto:" />
+				<p:fileUpload id="upload" mode="advanced"
+					fileUploadListener="#{itensPedidoBean.upload}" update=":mensagem :formCadastro:foto" auto="true" />
+					
+				<p:outputLabel for="foto"  value="Foto:"/>
+				<h:graphicImage id="foto" value="#{imagemBean.foto}" >
+					<f:param name="caminho" value="#{itensPedidoBean.itenspedido.caminho}" />
+				</h:graphicImage>
 			</h:panelGrid>
 
 			<h:panelGrid columns="2">
