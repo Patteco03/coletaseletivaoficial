@@ -38,7 +38,8 @@
 		<mapping class="br.com.coleta.domain.Condominio" />
 		<mapping class="br.com.coleta.domain.Estado" />
 		<mapping class="br.com.coleta.domain.ItensPedido" />
-		<mapping class="br.com.coleta.domain.Pedido" />
+		<mapping class="br.com.coleta.domain.Venda" />
+		<mapping class="br.com.coleta.domain.ItemVenda" />
 		<mapping class="br.com.coleta.domain.Pessoa" />
 		<mapping class="br.com.coleta.domain.Produto" />
 		<mapping class="br.com.coleta.domain.Usuario" />

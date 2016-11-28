@@ -23,6 +23,7 @@ public class ClienteBean implements Serializable {
 
 	private List<Cliente> clientes;
 	private List<Pessoa> pessoas;
+	
 
 	public Cliente getCliente() {
 		return cliente;
