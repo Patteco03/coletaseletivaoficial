@@ -1,95 +1,191 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Ecorio</title>
-    <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<title>Ecorio - Sistema de Coleta Seletiva</title>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="css/full-width-pics.css" rel="stylesheet">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
-<body id="corpo">
-<div id="conteiner">
-    <div id="interface">
-        <heder id="cabecalho">
-            <div>
-                <div id="logo-img">
-                    <img id="logo" src="img/logo.png">
-                </div>
-                <div id="div-nav">
-                    <nav id="menu">
-                        <ul type="circle">
-                            <li><a href="index.html"><span id="glyph" class="glyphicon glyphicon-home"></span>home</a></li>
-                            <li><a href="empresa.html"><span id="empr" class="glyphicon glyphicon-user"></span>empresa</a></li>
-                            <li><a href="guiarapido.html"><span id="inf" class="glyphicon glyphicon-info-sign"></span>guia rapido</a></li>
-                            <li><a href="cadastre-se.html"><span id="cadastro" class="glyphicon glyphicon-user"></span>cadastre-se</a></li>
-                            <li><a href="contatos.html"><span id="contatos" class="glyphicon glyphicon-phone-alt"></span>contatos</a></li>
-                            <li><a href="/templates/modelo.xhtml"><span id="contatos" class="glyphicon glyphicon-phone-alt"></span>entrar</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <figure class="banner">
-                <figcaption>
-                    <p><h1>A gestão dos resíduos começa em casa e o resto é com a gente...</h1></p>
-                </figcaption>
-                <img src="img/baner.jpg">
-            </figure>
-        </heder>
-    </div>
-    <div id="mtx">
-        <span id="marker" class="glyphicon glyphicon-map-marker"></span>
-        <span id="tx"><p><h1>Saiba aonde descartar seus resíduos</h1></p></span>
-    </div>
-    <div id="formulario">
-        <form>
-            <fieldset>
-                <h3><p class="ph3">O queprecisa descartar?</p></h3>
-                <input type="text" name="descart" id="cdescart" size="30" placeholder="Material de descarte é?">
-            </fieldset>
-            <fieldset>
-                <h3><p class="ph3">A onde deseja descartar?</p></h3>
-                <input type="text" name="onde" id="conde"  size="30" placeholder="CEP ou endereço">
-            </fieldset>
-            <fieldset>
-                <h3><p class="ph3">Digite seu email:</p></h3>
-                <input type="text" name="email" id="cemail"  size="30" placeholder="Digite seu email">
-            </fieldset>
-        </form>
-    </div>
-    <footer>
-        <div id="fr">
-            <nav id="rodape">
-               <ul type="circle">
-                <li><a href="trasporte.html">Transpote de Resíduos</a></li>
-                <li><a href="gestao.html">Gestão de Resídios</a></li>
-                <li><a href="acessoria.html">Acessoria Ambiental</a></li>
-               </ul>
-            </nav>
-        </div>
-    </footer>
-    <div id="fcontato">
-        <section id="direita">
-            <h4><p> Endereço:</p></h4>
-            <p>Conj. Novo Horizonte Rua Nauas - 268</p>
-        </section>
-        <aside id="esquerda">
-            <p>Telefones:</p>
-            <p>(68)9935-6912</p>
-            <p>(68)9201-4629</p>
-            <p>(68)9212-7887</p>
-        </aside>
-    </div>
-    <div id="fim">
-        <p><h3>2016 ecorio|Todos os direitos reservados</h3></p>
-    </div>
-</div>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand"
+					href="http://localhost:8080/Coleta/web/index.html">Ecorio</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="http://localhost:8080/Coleta/web/index.html">Home</a>
+					</li>
+					<li><a href="#">Empresa</a></li>
+					<li><a href="#">Guia Rápido</a></li>
+					<li><a href="#">Cadastre-se</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+						<ul id="login-dp" class="dropdown-menu">
+							<li>
+								<div class="row">
+									<div class="col-md-12">
+										Email
+										<form class="form" role="form" method="post" action="login"
+											accept-charset="UTF-8" id="login-nav">
+											<div class="form-group">
+												<label class="sr-only" for="exampleInputEmail2">Email
+													address</label> <input type="email" class="form-control"
+													id="exampleInputEmail2" placeholder="Email address"
+													required>
+											</div>
+											Senha
+											<div class="form-group">
+												<label class="sr-only" for="exampleInputPassword2">Password</label>
+												<input type="password" class="form-control"
+													id="exampleInputPassword2" placeholder="Password" required>
+												<div class="help-block text-right">
+													<a href="">Esqueçeu sua senha?</a>
+												</div>
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn btn-primary btn-block">Login</button>
+											</div>
+											<div class="checkbox">
+												<label> <input type="checkbox"> Lembrar
+													senha
+												</label>
+											</div>
+										</form>
+									</div>
+									<div class="bottom text-center">
+										Ainda não tem uma conta ? <a href="#"><b>Registre-se </b></a>
+									</div>
+								</div>
+							</li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Full Width Image Header with Logo -->
+	<!-- Image backgrounds are set within the full-width-pics.css file. -->
+	<header class="image-bg-fluid-height">
+		<img class="img-responsive img-center" src="images/logo1.png"
+			alt="logo">
+
+	</header>
+
+	<!-- Content Section -->
+	<section class="area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="col-md-2">
+						<img class="img-responsive" src="images/local.png" alt="local">
+					</div>
+					<div class="col-md-10">
+						<h1 class="section-heading">Ajude a natureza vendendo lixo
+							reciclável</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="info">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="col-md-6">
+						<img class="img-responsive" src="images/lixeira.jpg" alt="lixeira">
+					</div>
+					<div class="col-md-6">
+						<h1 class="section-heading">Para facilitar a implantação de
+							uma gestão consciente de resíduos, disponibilizamos um serviço de
+							compra e venda de produtos recicláveis a onde pode ser criado
+							novos produtos. O custo benefício acaba compensando,
+							considerando que aumenta ( e muito) a eficiência do processo, os
+							planos de comunicação promovem a conscientização e orientação de
+							funcionários e moradores e as empresas coletam os resíduos
+							diretamente nos condomínios.</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="col-md-4">
+						<h1 class="section-heading">Acessoria Ambiental</h1>
+						
+						<h2><b>Endereço:</b>Conjunto Novo Horizonte Rua Nauas Nº 268. </h2> 
+					</div>
+					
+					<div class="col-md-8"> 
+					<h3><b>Telefone:</b>(68) 99935-6912 / 99201-4629 / 99212-7887  </h3> 
+					
+				</div>
+				</div>
+			</div>
+		</div>
+		
+		<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<p>Copyright &copy; ecorio 2016</p>
+				</div>
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</footer>
+	</section>
+
+	<!-- Footer -->
+	
+
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
 </body>
+
 </html>

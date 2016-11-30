@@ -6,6 +6,10 @@
 
 	<!-- Nome da Aplicação -->
 	<display-name>Coleta</display-name>
+	
+	<welcome-file-list>
+		<welcome-file> web/index.html</welcome-file>
+	</welcome-file-list>
 
 	<!-- Estágio do Projeto -->
 	<context-param>
