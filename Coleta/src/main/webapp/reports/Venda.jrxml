@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-12-01T05:02:16 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Venda" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a021c555-6355-45aa-babc-15d4bca4c0d2">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="ZGJfY29sZXRhLmNpZGFkZSBBUyAsNTcsMzkxLDE3YzA2NzhhLTJhZDQtNGI0Yi05ZmU3LTUxMTc5&#xA;ZDY4ZmNhNztkYl9jb2xldGEudmVuZGEgQVMgLDM5LDQxLGViMWRkYzEwLTZjMGEtNDczNy04YjE3&#xA;LTRmZjkyNTJlNzEzODtkYl9jb2xldGEuZXN0YWRvIEFTICw3MCw1ODksZjQxMDAyNTctM2U2Mi00&#xA;M2ZkLThmOGItMTUzOWQ2ZDI1MWY4O2RiX2NvbGV0YS5jb25kb21pbmlvIEFTICw0NywyNDcsMTVk&#xA;YTczNWEtYjAxOS00ZGM5LTk3ZGYtY2JmNWMzYTFiOWJiO2RiX2NvbGV0YS5wZXNzb2EgQVMgLDI2&#xA;MiwyMzcsNjYzOTI4ZmItNjUxOC00OTYyLThkMDQtMzdhZjYyNDc3NzQ2O2RiX2NvbGV0YS5jbGll&#xA;bnRlIEFTICwyNTEsMjQsN2RiNGNiMzMtMjljNy00M2FmLWFkNzYtNjRhMjA3OTE5MjhmOw=="/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="385"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="602"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Coleta Data Adapter "/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+FROM db_coleta.venda
+	INNER JOIN db_coleta.cliente ON 
+	 db_coleta.venda.cliente_codigo = db_coleta.cliente.codigo 
+	INNER JOIN db_coleta.condominio ON 
+	 db_coleta.cliente.condominio_codigo = db_coleta.condominio.codigo 
+	INNER JOIN db_coleta.pessoa ON 
+	 db_coleta.cliente.pessoa_codigo = db_coleta.pessoa.codigo 
+	INNER JOIN db_coleta.cidade ON 
+	 db_coleta.pessoa.cidade_codigo = db_coleta.cidade.codigo 
+	INNER JOIN db_coleta.estado ON 
+	 db_coleta.cidade.estado_codigo = db_coleta.estado.codigo]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

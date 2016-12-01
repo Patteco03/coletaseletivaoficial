@@ -2,6 +2,7 @@ package br.com.coleta.dao;
 
 import java.util.List;
 
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -11,16 +12,20 @@ import br.com.coleta.domain.Usuario;
 public class UsuarioDAOTest {
 
 	@Test
-	@Ignore
 	public void salvar() {
 
 		Long codigo = 2L;
 
 		PessoaDAO pessoaDAO = new PessoaDAO();
 		Pessoa pessoa = pessoaDAO.buscar(codigo);
+		
+		
 
 		Usuario usuario = new Usuario();
-		usuario.setSenha("55142");
+		usuario.setSenhaSemCriptografia("102030");
+		
+		SimpleHash hash = new SimpleHash("md5", usuario.getSenhaSemCriptografia());
+		usuario.setSenha(hash.toHex());
 		usuario.setTipo(new Character('A'));
 		usuario.setAtivo(new Boolean(false));
 		usuario.setPessoa(pessoa);
@@ -86,6 +91,7 @@ public class UsuarioDAOTest {
 	}
 	
 	@Test
+	@Ignore
 	public void editar(){
 		
 		Long codigoPessoa = 2L;

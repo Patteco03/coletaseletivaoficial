@@ -15,14 +15,14 @@
 
 	<div id="geral">
 		<div id="topo" class="divTopo">
-			<img src="img/logo.png" alt="banner" width="100" height="100" />
+			<img src="images/logo1.png" alt="banner" width="100" height="100" />
 		</div>
 
 		<div id="cabecalho" class="divCabecalho">
 			<h:form id="formMenu">
 				<p:menubar>
 					<p:submenu label="Arquivo">
-						<p:menuitem value="Sair" />
+						<p:menuitem url="/web/index.html" value="Sair" />
 					</p:submenu>
 
 					<p:submenu label="Cadastros">
@@ -34,13 +34,15 @@
 					</p:submenu>
 
 					<p:submenu label="Movimentações">
-						<p:menuitem value="Venda" url="/paginas/Venda.xhtml" />
+						<p:menuitem value="Loja" url="/paginas/Venda.xhtml" />
 					</p:submenu>
 
 					<p:submenu label="Ajuda">
 						<p:menuitem value="Sobre" />
 					</p:submenu>
 				</p:menubar>
+				
+				<h:outputText value="Bem Vindo #{autenticacaoBean.usuariologado.pessoa.nome}" />
 			</h:form>
 		</div>
 
