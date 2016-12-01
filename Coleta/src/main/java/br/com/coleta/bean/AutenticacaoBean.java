@@ -18,43 +18,41 @@ import br.com.coleta.domain.Usuario;
 public class AutenticacaoBean {
 	
 	private Usuario usuario;
-	private Usuario usuariologado;
-	
-	public Usuario getUsuariologado() {
-		return usuariologado;
-	}
-	
-	public void setUsuariologado(Usuario usuariologado) {
-		this.usuariologado = usuariologado;
-	}
-	
+	private Usuario usuarioLogado;
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
-	
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 	
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
+	}
+	
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
+
 	@PostConstruct
 	public void iniciar() {
 		usuario = new Usuario();
 		usuario.setPessoa(new Pessoa());
 	}
-	
+
 	public void autenticar() {
 		try {
-			
 			UsuarioDAO usuarioDAO = new UsuarioDAO();
-			Usuario usuarioLogado = usuarioDAO.autentiar(usuario.getPessoa().getEmail(), usuario.getSenha());
+			usuarioLogado = usuarioDAO.autentiar(usuario.getPessoa().getEmail(), usuario.getSenha());
 			
 			if(usuarioLogado == null){
-				
 				Messages.addGlobalError("Email ou senha incorretos");
-				return;	
+				return;
 			}
 			
-			Faces.redirect("web/modelo.xhtml");
+			Faces.redirect("./web/modelo.xhtml");
 		} catch (IOException erro) {
 			erro.printStackTrace();
 			Messages.addGlobalError(erro.getMessage());

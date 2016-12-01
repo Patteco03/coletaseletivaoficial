@@ -18,7 +18,7 @@
 				paginator="true" value="#{produtoBean.produtos}" var="produtos">
 				<f:facet name="header">
 					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
-						actionListener="#{produtoBean.novo()}"
+						actionListener="#{produtoBean.novo}"
 						update=":formularioCadastro:painel" />
 				</f:facet>
 
@@ -79,7 +79,7 @@
 
 			<h:panelGrid columns="2">
 				<p:commandButton value="Salvar"
-					actionListener="#{produtoBean.salvar()}"
+					actionListener="#{produtoBean.salvar}"
 					update=":menssagem :formularioCadastro:painel :formListagem:tabela" />
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>

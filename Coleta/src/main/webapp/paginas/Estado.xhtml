@@ -18,7 +18,7 @@
 				paginator="true" value="#{estadoBean.estados}" var="estado">
 				<f:facet name="header">
 					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
-						actionListener="#{estadoBean.novo()}"
+						actionListener="#{estadoBean.novo}"
 						update=":formularioCadastro:painel" >
 						<f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
 						</p:commandButton>

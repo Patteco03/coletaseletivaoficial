@@ -19,7 +19,7 @@
 				var="condominio">
 				<f:facet name="header">
 					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();"
-						actionListener="#{condominioBean.novo()}"
+						actionListener="#{condominioBean.novo}"
 						update=":formularioCadastro:painel" >
 					<f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
 					</p:commandButton>	
@@ -73,7 +73,7 @@
 
 			<h:panelGrid columns="2">
 				<p:commandButton value="Salvar"
-					actionListener="#{condominioBean.salvar()}"
+					actionListener="#{condominioBean.salvar}"
 					update=":menssagem :formularioCadastro:painel :formListagem:tabela" />
 				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
 			</h:panelGrid>

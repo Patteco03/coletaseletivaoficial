@@ -27,7 +27,7 @@ public class UsuarioDAOTest {
 		SimpleHash hash = new SimpleHash("md5", usuario.getSenhaSemCriptografia());
 		usuario.setSenha(hash.toHex());
 		usuario.setTipo(new Character('A'));
-		usuario.setAtivo(new Boolean(false));
+		usuario.setAtivo(new Boolean(true));
 		usuario.setPessoa(pessoa);
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
